@@ -22,6 +22,7 @@ class Solution:
                         temp=A[i]
                         A[i]=A[2*i+1]
                         A[2*i+1]=temp
+                        max_heapify(2*i+1)
                 else:
                     maxi=max(A[i][0],A[2*i+1][0],A[2*i+2][0])
                     mini=min(A[i][0],A[2*i+1][0],A[2*i+2][0])
@@ -30,13 +31,12 @@ class Solution:
                             temp=A[i]
                             A[i]=A[2*i+1]
                             A[2*i+1]=temp
+                            max_heapify(2*i+1)
                         else:
                             temp=A[i]
                             A[i]=A[2*i+2]
                             A[2*i+2]=temp
-                        max_heapify(2*i+1)
-                        max_heapify(2*i+2)
-                                 
+                            max_heapify(2*i+2)
         def extract_max():
             nonlocal A
             #    print(f'We are extracting curent A as {A}')
