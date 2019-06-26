@@ -6,7 +6,7 @@
             nums[i], nums[zero] = nums[zero], nums[i]
             zero += 1'''
 class Solution:
-    def moveZeroes(self, nums: List[int]) -> None:
+    def moveZeroes(self, nums: List[int]):
         """
         Do not return anything, modify nums in-place instead.
         """
