@@ -14,3 +14,4 @@ class Solution(object):
             if not fast:return False
             fast=fast.next
         return False 
+        
