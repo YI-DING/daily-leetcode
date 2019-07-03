@@ -23,3 +23,4 @@ class Solution:
                 return first==first[::-1] or second==second[::-1]
             left,right=left+1,right-1
         return True
+#clean
