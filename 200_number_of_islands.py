@@ -15,7 +15,7 @@ def numIslands(self, grid: List[List[str]]):
         
     for i in range(row_num):#traverse lines
         for j in range(col_num):#for each line, traverse each node
-            if (i,j) in visited or (grid[i][j] == 0) :
+            if (i,j) in visited or grid[i][j] == '0' :
                 continue
             visited.add((i,j))#if first time visit
             island_count+=1
@@ -24,7 +24,7 @@ def numIslands(self, grid: List[List[str]]):
             while len(queue):
                 (a,b)=queue.popleft()
                 for neighbor in get_neighbors(a,b):
-                    if grid[neighbor[0]][neighbor[1]] == 1 and (neighbor not in visited):
+                    if grid[neighbor[0]][neighbor[1]] == '1' and neighbor not in visited:
                         visited.add(neighbor)
                         queue.append(neighbor)
     return island_count
