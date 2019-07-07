@@ -41,14 +41,22 @@ def isPalindrome(head: ListNode):
 
 print(isPalindrome(A))
 '''
-def isPalindrome(self, head: ListNode) :
+def isPalindrome(self, head):
+    """
+    :type head: ListNode
+    :rtype: bool
+    """
     if not head or not head.next:
         return True
     fast=slow=head
     prev=None
     #find mid
     while fast and fast.next:
-        fast,slow,slow.next,prev=fast.next.next,slow.next,prev,slow
+        fast = fast.next.next
+        tmp = slow.next
+        slow.next = prev 
+        prev = slow
+        slow = tmp
     slow=slow.next if fast else slow
     while prev and prev.val == slow.val:
         slow,prev=slow.next,prev.next
