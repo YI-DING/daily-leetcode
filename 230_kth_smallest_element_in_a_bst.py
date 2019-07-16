@@ -15,3 +15,15 @@ class Solution:
             lefty.extend(ordered)
             return lefty
         return build(root)[k-1]
+
+#using stack and up to k:
+node, node.right = self, root
+stack = [node]
+for _ in range(k):
+    node = stack.pop()
+    if node.right:
+        node = node.right
+        while node:
+            stack.append(node)
+            node = node.left
+return stack[-1].val
