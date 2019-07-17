@@ -1,25 +1,39 @@
 class Solution:
-    def threeSum(self, nums: List[int]):
-        nums.sort()
-        last, result , previous=len(nums)-1 , [] , None
-        for i,number in enumerate(nums):
-            if number == previous:
-                continue
-            else:
-                previous=number
-            if number > 0:
-                break
-            target=-number
-            left,right,sub = i+1,last,[]
-            while left < right:
-                if nums[left]+nums[right] == target:
-                    if [number,nums[left],nums[right]] not in sub: 
-                        sub.append([number,nums[left],nums[right]])
-                    right,left=right-1,left+1
-                elif nums[left]+nums[right] > target:
-                    right-=1
+    """
+    @param numbers: Give an array numbers of n integer
+    @return: Find all unique triplets in the array which gives the sum of zero.
+    """
+    def threeSum(self, numbers):
+        if not numbers:
+            return None
+        numbers.sort()
+
+        def twosum(array, value):
+            if not array:
+                return []
+            result = []
+            start, end = 0, len(array) - 1
+            while start < end:
+                if array[start] + array[end] == target:
+                    result.append([start, end])
+                    lft, rgt = array[start], array[end]
+                    while start < end and array[start] == lft:
+                        start += 1
+                    while start < end and array[end] == rgt:
+                        end -= 1
+                elif array[start] + array[end] > target:
+                    end -= 1
                 else:
-                    left+=1
-            if sub:
-                result.extend(sub)
+                    start += 1
+            return result
+
+        start = 0
+        result = []
+        while start < len(numbers) - 2:
+            twosum_result = twosum(numbers[start+1:], -numbers[start])
+            for pair in twosum_result:
+                result.append([numbers[start]] + pair)
+            num = numbers[start]
+            while start < len(numbers) -2 and num == numbers[start]:
+                start += 1
         return result 
