@@ -5,20 +5,20 @@
         if nums[i] != 0:
             nums[i], nums[zero] = nums[zero], nums[i]
             zero += 1'''
+#sol
 class Solution:
-    def moveZeroes(self, nums: List[int]):
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        for i in range(len(nums)):
-            if i==len(nums)-1:break
-            if nums[i]==0:
-                k=i+1
-                while k<len(nums):
-                    if nums[k]!=0:break
-                    else: k+=1
-                if k==len(nums):break
-                temp=nums[k]
-                nums[k]=nums[i]
-                nums[i]=temp
-        
+    """
+    @param nums: an integer array
+    @return: nothing
+    """
+    def moveZeroes(self, nums):
+        if not nums:
+            return 
+        head = 0
+        for number in nums:
+            if number != 0:
+                nums[head] = number
+                head += 1
+        for i in range(head,len(nums)):
+            if nums[i] != 0:
+                nums[i] = 0
